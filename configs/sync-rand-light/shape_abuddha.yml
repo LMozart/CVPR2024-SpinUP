@@ -1,0 +1,63 @@
+dataset:
+  data_path: ./data/Sync_rand/shape_buddha/
+  lgt_path: sg_64_3_0_80_True.npy
+  gray_scale: false
+  shadow_threshold: 0.1
+  sparse_input: null
+  sparse_input_random_seed: null
+experiment:
+  batch_size: 4 * 1
+  cuda: cuda:0
+  end_epoch: 2000
+  eval_every_iter: 100
+  log_path: ./runs/Sync_rand/shape_buddha
+  randomseed: 42
+  save_every_epoch: 500
+  start_epoch: 1
+loss:
+  contour_factor: 1.
+  diff_tv_factor: 0.01
+  normal_tv_factor: 0.02
+  normal_tv_l_factor: 0.5 # attenuated normal tv, L.162
+  depth_tv_factor: 0.00
+  regularize_epoches: 0.25
+  rgb_loss: sml1
+  spec_coeff_factor: 0.01
+  spec_tv_factor: 0.01
+models:
+  checkpoint_path: null
+  specular:
+    dynamic_basis: true
+    k_high: 0.9
+    k_low:  0.1
+    num_bases: 12
+    trainable_k: true
+    type: Spherical_Gaussian
+  light_model:
+    hidden_size: 64
+    ld_noise: 0
+    li_noise: 0
+    load_pretrain: false
+    num_layers: 3
+    skip_connect_every: 8
+    type: Light_Model_SG
+  load_checkpoint: false
+  nml_mlp:
+    hidden_size: 256
+    include_input_input: 2
+    num_encoding_fn_input: 10
+    num_layers: 8
+    skip_connect_every: 3
+  mat_mlp:
+    hidden_size: 256
+    include_input_input: 2
+    num_encoding_fn_input: 6
+    num_layers: 8
+    skip_connect_every: 3
+  use_mean_var: false
+optimizer:
+  lr: 0.001
+  type: Adam
+scheduler:
+  gamma: 1
+  step_size: 500000

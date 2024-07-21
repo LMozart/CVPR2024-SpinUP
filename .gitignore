@@ -1,0 +1,10 @@
+data/
+runs/
+__pycache__/
+ref_code/
+wandb/
+scripts/
+*.png
+test.png
+exam/
+.DS_Store
